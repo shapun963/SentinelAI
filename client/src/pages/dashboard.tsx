@@ -12,6 +12,7 @@ import type { AnalysisResult } from "@shared/schema";
 export default function Dashboard() {
   const [currentPrompt, setCurrentPrompt] = useState("");
   const [analysisResult, setAnalysisResult] = useState<AnalysisResult | null>(null);
+  const [showResults, setShowResults] = useState(false);
   const { toast } = useToast();
 
   const analyzeMutation = useMutation({
@@ -35,6 +36,7 @@ export default function Dashboard() {
   const handleAnalyze = (prompt: string) => {
     setCurrentPrompt(prompt);
     setAnalysisResult(null);
+    setShowResults(true);
     analyzeMutation.mutate({ prompt });
   };
 
@@ -50,32 +52,43 @@ export default function Dashboard() {
             isLoading={analyzeMutation.isPending}
           />
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Left Column */}
-            <div className="space-y-6">
-              {/* Section 1: Analysis Results */}
-              <AnalysisResults
-                originalPrompt={currentPrompt}
-                analysisResult={analysisResult}
-                isLoading={analyzeMutation.isPending}
-              />
-              
-              {/* Section 4: Summary Panel */}
-              <SummaryPanel
-                analysisResult={analysisResult}
-                isLoading={analyzeMutation.isPending}
-              />
-            </div>
+          {/* Results Section - Hidden initially, animated reveal */}
+          {showResults && (
+            <div className="animate-slide-up space-y-8">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Left Column */}
+                <div className="space-y-6">
+                  {/* Section 1: Analysis Results */}
+                  <div className="animate-fade-in" style={{ animationDelay: '0.1s' }}>
+                    <AnalysisResults
+                      originalPrompt={currentPrompt}
+                      analysisResult={analysisResult}
+                      isLoading={analyzeMutation.isPending}
+                    />
+                  </div>
+                  
+                  {/* Section 4: Summary Panel */}
+                  <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
+                    <SummaryPanel
+                      analysisResult={analysisResult}
+                      isLoading={analyzeMutation.isPending}
+                    />
+                  </div>
+                </div>
 
-            {/* Right Column */}
-            <div className="space-y-6">
-              {/* Section 5: Score Dashboard */}
-              <ScoreDashboard
-                analysisResult={analysisResult}
-                isLoading={analyzeMutation.isPending}
-              />
+                {/* Right Column */}
+                <div className="space-y-6">
+                  {/* Section 5: Score Dashboard */}
+                  <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                    <ScoreDashboard
+                      analysisResult={analysisResult}
+                      isLoading={analyzeMutation.isPending}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </main>
     </div>
