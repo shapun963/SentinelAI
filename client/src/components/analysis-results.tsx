@@ -43,21 +43,21 @@ export function AnalysisResults({ originalPrompt, analysisResult, isLoading }: A
   };
 
   return (
-    <Card className="bg-white shadow-sm border border-gray-200">
+    <Card className="glass-card border-white/20 shadow-2xl">
       <CardHeader>
-        <CardTitle className="flex items-center justify-between">
+        <CardTitle className="flex items-center justify-between text-xl">
           <div className="flex items-center">
-            <FileText className="w-5 h-5 text-[hsl(207,90%,54%)] mr-2" />
-            Analysis Results
+            <FileText className="w-6 h-6 text-blue-400 mr-3" />
+            <span className="gradient-text">Analysis Results</span>
           </div>
           <div className="flex items-center space-x-2">
-            <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-            <span className="text-sm text-gray-500">Real-time</span>
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span className="text-sm text-gray-400">Real-time</span>
           </div>
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="min-h-64 bg-gray-50 rounded-lg p-4 border-2 border-dashed border-gray-300">
+        <div className="min-h-64 bg-black/20 backdrop-blur-sm rounded-xl p-6 border border-white/10">
           {isLoading ? (
             <div className="text-center py-12">
               <div className="animate-spin w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full mx-auto mb-4"></div>

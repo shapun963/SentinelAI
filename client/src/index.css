@@ -5,34 +5,35 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(20, 14.3%, 4.1%);
-  --muted: hsl(60, 4.8%, 95.9%);
-  --muted-foreground: hsl(25, 5.3%, 44.7%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(20, 14.3%, 4.1%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(20, 14.3%, 4.1%);
-  --border: hsl(20, 5.9%, 90%);
-  --input: hsl(20, 5.9%, 90%);
-  --primary: hsl(207, 90%, 54%);
-  --primary-foreground: hsl(211, 100%, 99%);
-  --secondary: hsl(60, 4.8%, 95.9%);
-  --secondary-foreground: hsl(24, 9.8%, 10%);
-  --accent: hsl(60, 4.8%, 95.9%);
-  --accent-foreground: hsl(24, 9.8%, 10%);
-  --destructive: hsl(0, 84.2%, 60.2%);
-  --destructive-foreground: hsl(60, 9.1%, 97.8%);
-  --ring: hsl(20, 14.3%, 4.1%);
-  --radius: 0.5rem;
+  --background: hsl(220, 13%, 9%);
+  --foreground: hsl(220, 9%, 93%);
+  --muted: hsl(220, 13%, 15%);
+  --muted-foreground: hsl(220, 9%, 65%);
+  --popover: hsl(220, 13%, 11%);
+  --popover-foreground: hsl(220, 9%, 93%);
+  --card: hsl(220, 13%, 11%);
+  --card-foreground: hsl(220, 9%, 93%);
+  --border: hsl(220, 13%, 18%);
+  --input: hsl(220, 13%, 15%);
+  --primary: hsl(210, 100%, 56%);
+  --primary-foreground: hsl(220, 13%, 9%);
+  --secondary: hsl(220, 13%, 15%);
+  --secondary-foreground: hsl(220, 9%, 93%);
+  --accent: hsl(220, 13%, 15%);
+  --accent-foreground: hsl(220, 9%, 93%);
+  --destructive: hsl(0, 76%, 60%);
+  --destructive-foreground: hsl(220, 9%, 93%);
+  --ring: hsl(210, 100%, 56%);
+  --radius: 0.75rem;
   
   /* Sentinel AI Custom Colors */
-  --sentinel-primary: hsl(207, 90%, 54%);
-  --sentinel-secondary: hsl(262, 83%, 58%);
-  --sentinel-success: hsl(142, 76%, 36%);
-  --sentinel-danger: hsl(0, 84%, 60%);
-  --sentinel-warning: hsl(38, 92%, 50%);
-  --sentinel-info: hsl(217, 91%, 60%);
+  --sentinel-primary: hsl(210, 100%, 56%);
+  --sentinel-secondary: hsl(262, 83%, 65%);
+  --sentinel-success: hsl(142, 76%, 50%);
+  --sentinel-danger: hsl(0, 76%, 60%);
+  --sentinel-warning: hsl(38, 92%, 55%);
+  --sentinel-info: hsl(217, 91%, 65%);
+  --sentinel-gradient: linear-gradient(135deg, hsl(210, 100%, 56%) 0%, hsl(262, 83%, 65%) 100%);
 }
 
 .dark {
@@ -64,22 +65,42 @@
   }
 
   body {
-    @apply font-sans antialiased bg-gray-50 text-foreground;
+    @apply font-sans antialiased bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, hsl(220, 13%, 9%) 0%, hsl(220, 13%, 12%) 100%);
+    min-height: 100vh;
   }
 }
 
 @layer components {
   .highlight-injection {
-    @apply bg-red-100 border-l-4 border-red-500 px-1 py-0.5 rounded;
+    @apply bg-red-500/20 border border-red-500/50 px-2 py-1 rounded-md text-red-100 font-medium backdrop-blur-sm;
+    box-shadow: 0 0 20px hsl(0, 76%, 60%)/30%;
   }
   
   .highlight-bias {
-    @apply bg-yellow-100 border-l-4 border-yellow-500 px-1 py-0.5 rounded;
+    @apply bg-yellow-500/20 border border-yellow-500/50 px-2 py-1 rounded-md text-yellow-100 font-medium backdrop-blur-sm;
+    box-shadow: 0 0 20px hsl(38, 92%, 55%)/30%;
   }
   
   .highlight-pii {
-    @apply bg-blue-100 border-l-4 border-blue-500 px-1 py-0.5 rounded;
+    @apply bg-blue-500/20 border border-blue-500/50 px-2 py-1 rounded-md text-blue-100 font-medium backdrop-blur-sm;
+    box-shadow: 0 0 20px hsl(210, 100%, 56%)/30%;
+  }
+  
+  .glass-card {
+    @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl;
+  }
+  
+  .gradient-text {
+    background: var(--sentinel-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .neon-glow {
+    box-shadow: 0 0 30px hsl(210, 100%, 56%)/50%, 0 0 60px hsl(210, 100%, 56%)/30%;
   }
 }
 
@@ -99,6 +120,14 @@
   .animate-pulse-slow {
     animation: pulse 3s infinite;
   }
+  
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
 }
 
 @keyframes progress {
@@ -113,4 +142,14 @@
 @keyframes slideUp {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 20px hsl(210, 100%, 56%)/20%; }
+  to { box-shadow: 0 0 40px hsl(210, 100%, 56%)/60%, 0 0 60px hsl(210, 100%, 56%)/40%; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
 }

@@ -59,11 +59,11 @@ export function PromptInput({ onAnalyze, isLoading }: PromptInputProps) {
   const maxChars = 10000;
 
   return (
-    <Card className="bg-white shadow-sm border border-gray-200">
-      <CardHeader>
-        <CardTitle className="flex items-center">
-          <Keyboard className="w-5 h-5 text-[hsl(207,90%,54%)] mr-2" />
-          Prompt Input
+    <Card className="glass-card border-white/20 shadow-2xl">
+      <CardHeader className="pb-4">
+        <CardTitle className="flex items-center text-xl">
+          <Keyboard className="w-6 h-6 text-blue-400 mr-3" />
+          <span className="gradient-text">Prompt Input</span>
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -77,7 +77,7 @@ export function PromptInput({ onAnalyze, isLoading }: PromptInputProps) {
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               rows={8}
-              className="w-full font-mono text-sm resize-none border-2 border-[hsl(207,90%,54%)] focus:border-[hsl(207,90%,44%)] focus:ring-2 focus:ring-[hsl(207,90%,54%)]/20 bg-blue-50/30 focus:bg-blue-50/50 transition-all duration-200"
+              className="w-full font-mono text-sm resize-none bg-black/30 border-2 border-blue-500/50 focus:border-blue-400 focus:ring-2 focus:ring-blue-500/30 backdrop-blur-sm text-gray-100 placeholder-gray-400 transition-all duration-300 hover:border-blue-400/70"
               placeholder="Type or paste your AI prompt here for security analysis..."
               maxLength={maxChars}
               disabled={isLoading}
@@ -94,16 +94,16 @@ export function PromptInput({ onAnalyze, isLoading }: PromptInputProps) {
             <Button 
               type="submit" 
               disabled={!prompt.trim() || isLoading}
-              className="flex-1 bg-[hsl(207,90%,54%)] hover:bg-[hsl(207,90%,44%)]"
+              className="flex-1 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold shadow-lg neon-glow transition-all duration-300"
             >
               {isLoading ? (
                 <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
                   Analyzing...
                 </>
               ) : (
                 <>
-                  <Play className="w-4 h-4 mr-2" />
+                  <Play className="w-5 h-5 mr-2" />
                   Analyze Prompt
                 </>
               )}
@@ -113,6 +113,7 @@ export function PromptInput({ onAnalyze, isLoading }: PromptInputProps) {
               variant="outline"
               onClick={handleClear}
               disabled={isLoading}
+              className="border-white/20 text-gray-300 hover:text-white hover:bg-white/10 backdrop-blur-sm"
             >
               <Trash2 className="w-4 h-4" />
             </Button>

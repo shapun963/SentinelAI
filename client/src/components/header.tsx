@@ -3,23 +3,25 @@ import { Button } from "@/components/ui/button";
 
 export function Header() {
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200">
+    <header className="glass-card border-b border-white/10 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-[hsl(207,90%,54%)] rounded-lg flex items-center justify-center">
-              <Shield className="w-4 h-4 text-white" />
-            </div>
-            <h1 className="text-xl font-bold text-gray-900">Sentinel AI</h1>
-            <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full font-medium">
-              v2.1
-            </span>
-          </div>
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="sm">
+            <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center neon-glow">
+              <Shield className="w-5 h-5 text-white" />
+            </div>
+            <div className="flex items-center space-x-3">
+              <h1 className="text-2xl font-bold gradient-text">Sentinel AI</h1>
+              <span className="px-3 py-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 border border-blue-500/30 text-blue-300 text-xs rounded-full font-medium backdrop-blur-sm">
+                v2.1
+              </span>
+            </div>
+          </div>
+          <div className="flex items-center space-x-3">
+            <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-white/10">
               <Settings className="w-4 h-4" />
             </Button>
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" size="sm" className="text-gray-300 hover:text-white hover:bg-white/10">
               <HelpCircle className="w-4 h-4" />
             </Button>
           </div>

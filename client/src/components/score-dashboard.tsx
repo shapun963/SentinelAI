@@ -79,25 +79,25 @@ export function ScoreDashboard({ analysisResult, isLoading }: ScoreDashboardProp
   }, [analysisResult]);
 
   return (
-    <Card className="bg-white shadow-sm border border-gray-200">
+    <Card className="glass-card border-white/20 shadow-2xl">
       <CardHeader>
-        <CardTitle className="flex items-center">
-          <BarChart3 className="w-5 h-5 text-[hsl(142,76%,36%)] mr-2" />
-          Security Scores
+        <CardTitle className="flex items-center text-xl">
+          <BarChart3 className="w-6 h-6 text-green-400 mr-3" />
+          <span className="gradient-text">Security Scores</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Overall Score */}
-        <div className="p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg">
-          <div className="flex items-center justify-between mb-2">
-            <span className="font-medium text-gray-700">Overall Security Score</span>
-            <span className="text-2xl font-bold text-[hsl(207,90%,54%)]">
+        <div className="p-6 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-xl border border-blue-500/20 backdrop-blur-sm">
+          <div className="flex items-center justify-between mb-3">
+            <span className="font-semibold text-gray-200">Overall Security Score</span>
+            <span className="text-3xl font-bold gradient-text">
               {isLoading ? '--' : animatedScores.overall}
             </span>
           </div>
           <Progress 
             value={isLoading ? 0 : animatedScores.overall} 
-            className="h-2"
+            className="h-3"
           />
         </div>
 

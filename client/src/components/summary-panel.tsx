@@ -11,17 +11,17 @@ interface SummaryPanelProps {
 export function SummaryPanel({ analysisResult, isLoading }: SummaryPanelProps) {
   if (isLoading) {
     return (
-      <Card className="bg-white shadow-sm border border-gray-200">
+      <Card className="glass-card border-white/20 shadow-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center">
-            <Eye className="w-5 h-5 text-[hsl(262,83%,58%)] mr-2" />
-            TrustLens Summary
+          <CardTitle className="flex items-center text-xl">
+            <Eye className="w-6 h-6 text-purple-400 mr-3" />
+            <span className="gradient-text">TrustLens Summary</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-center py-8">
             <div className="animate-spin w-6 h-6 border-4 border-purple-500 border-t-transparent rounded-full mx-auto mb-3"></div>
-            <p className="text-gray-500">Generating summary...</p>
+            <p className="text-gray-400">Generating summary...</p>
           </div>
         </CardContent>
       </Card>
@@ -30,15 +30,15 @@ export function SummaryPanel({ analysisResult, isLoading }: SummaryPanelProps) {
 
   if (!analysisResult) {
     return (
-      <Card className="bg-white shadow-sm border border-gray-200">
+      <Card className="glass-card border-white/20 shadow-2xl">
         <CardHeader>
-          <CardTitle className="flex items-center">
-            <Eye className="w-5 h-5 text-[hsl(262,83%,58%)] mr-2" />
-            TrustLens Summary
+          <CardTitle className="flex items-center text-xl">
+            <Eye className="w-6 h-6 text-purple-400 mr-3" />
+            <span className="gradient-text">TrustLens Summary</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="text-gray-500 text-center py-8">
+          <div className="text-gray-400 text-center py-8">
             <ClipboardList className="w-12 h-12 mx-auto mb-3 opacity-50" />
             <p>Detailed analysis summary will appear here</p>
           </div>
@@ -52,11 +52,11 @@ export function SummaryPanel({ analysisResult, isLoading }: SummaryPanelProps) {
                    overall.riskLevel === 'medium' ? 'secondary' : 'default';
 
   return (
-    <Card className="bg-white shadow-sm border border-gray-200">
+    <Card className="glass-card border-white/20 shadow-2xl">
       <CardHeader>
-        <CardTitle className="flex items-center">
-          <Eye className="w-5 h-5 text-[hsl(262,83%,58%)] mr-2" />
-          TrustLens Summary
+        <CardTitle className="flex items-center text-xl">
+          <Eye className="w-6 h-6 text-purple-400 mr-3" />
+          <span className="gradient-text">TrustLens Summary</span>
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4 animate-fade-in">
