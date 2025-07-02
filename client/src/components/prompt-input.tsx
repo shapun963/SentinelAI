@@ -77,7 +77,7 @@ export function PromptInput({ onAnalyze, isLoading }: PromptInputProps) {
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               rows={8}
-              className="font-mono text-sm resize-none"
+              className="w-full font-mono text-sm resize-none border-2 border-[hsl(207,90%,54%)] focus:border-[hsl(207,90%,44%)] focus:ring-2 focus:ring-[hsl(207,90%,54%)]/20 bg-blue-50/30 focus:bg-blue-50/50 transition-all duration-200"
               placeholder="Type or paste your AI prompt here for security analysis..."
               maxLength={maxChars}
               disabled={isLoading}

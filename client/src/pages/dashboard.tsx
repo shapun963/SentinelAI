@@ -43,36 +43,38 @@ export default function Dashboard() {
       <Header />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Left Column */}
-          <div className="space-y-6">
-            {/* Section 1: Analysis Results */}
-            <AnalysisResults
-              originalPrompt={currentPrompt}
-              analysisResult={analysisResult}
-              isLoading={analyzeMutation.isPending}
-            />
-            
-            {/* Section 4: Summary Panel */}
-            <SummaryPanel
-              analysisResult={analysisResult}
-              isLoading={analyzeMutation.isPending}
-            />
-          </div>
+        <div className="space-y-8">
+          {/* Section 6: Prompt Input - Full Width */}
+          <PromptInput
+            onAnalyze={handleAnalyze}
+            isLoading={analyzeMutation.isPending}
+          />
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Left Column */}
+            <div className="space-y-6">
+              {/* Section 1: Analysis Results */}
+              <AnalysisResults
+                originalPrompt={currentPrompt}
+                analysisResult={analysisResult}
+                isLoading={analyzeMutation.isPending}
+              />
+              
+              {/* Section 4: Summary Panel */}
+              <SummaryPanel
+                analysisResult={analysisResult}
+                isLoading={analyzeMutation.isPending}
+              />
+            </div>
 
-          {/* Right Column */}
-          <div className="space-y-6">
-            {/* Section 5: Score Dashboard */}
-            <ScoreDashboard
-              analysisResult={analysisResult}
-              isLoading={analyzeMutation.isPending}
-            />
-            
-            {/* Section 6: Prompt Input */}
-            <PromptInput
-              onAnalyze={handleAnalyze}
-              isLoading={analyzeMutation.isPending}
-            />
+            {/* Right Column */}
+            <div className="space-y-6">
+              {/* Section 5: Score Dashboard */}
+              <ScoreDashboard
+                analysisResult={analysisResult}
+                isLoading={analyzeMutation.isPending}
+              />
+            </div>
           </div>
         </div>
       </main>
