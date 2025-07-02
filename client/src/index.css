@@ -88,6 +88,12 @@
     box-shadow: 0 0 20px hsl(210, 100%, 56%)/30%;
   }
   
+  .masked-pii {
+    @apply bg-blue-500/30 border border-blue-500/70 px-2 py-1 rounded-md text-blue-200 font-bold backdrop-blur-sm;
+    box-shadow: 0 0 30px hsl(210, 100%, 56%)/50%;
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+  }
+  
   .glass-card {
     @apply backdrop-blur-xl bg-white/5 border border-white/10 shadow-2xl;
   }
@@ -152,4 +158,9 @@
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
   50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  from { box-shadow: 0 0 30px hsl(210, 100%, 56%)/50%; }
+  to { box-shadow: 0 0 50px hsl(210, 100%, 56%)/70%, 0 0 80px hsl(210, 100%, 56%)/50%; }
 }
