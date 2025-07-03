@@ -13,6 +13,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 
@@ -272,6 +274,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Static files and frontend setup (will be added after API routes)
+import os
+from pathlib import Path
+frontend_path = Path(__file__).parent.parent / "dist" / "public"
+
 
 # Pydantic models
 class AnalysisRequest(BaseModel):
@@ -288,9 +295,9 @@ class AnalysisResponse(BaseModel):
 
 
 # API Routes
-@app.get("/")
-async def root():
-    """Root endpoint providing API information."""
+@app.get("/api")
+async def api_info():
+    """API information endpoint."""
     return {
         "service": "Sentinel AI",
         "version": "2.0.0",
@@ -338,6 +345,21 @@ async def analyze_content(request: AnalysisRequest):
     except Exception as e:
         logger.error(f"Analysis failed: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Analysis failed: {str(e)}")
+
+
+# Add frontend serving after all API routes
+if frontend_path.exists():
+    app.mount("/assets", StaticFiles(directory=str(frontend_path / "assets")), name="assets")
+    
+    @app.get("/{full_path:path}")
+    async def serve_frontend(full_path: str):
+        # Serve static files if they exist
+        static_file_path = frontend_path / full_path
+        if static_file_path.is_file():
+            return FileResponse(static_file_path)
+        
+        # Otherwise serve the React app's index.html
+        return FileResponse(str(frontend_path / "index.html"))
 
 
 if __name__ == "__main__":
