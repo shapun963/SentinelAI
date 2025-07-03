@@ -15,12 +15,12 @@ Sentinel AI is a comprehensive web application designed to analyze AI prompts fo
 - **UI Components**: Radix UI primitives with custom styling
 
 ### Backend Architecture
-- **Runtime**: Node.js with Express.js framework
-- **Language**: TypeScript with ES modules
-- **Database**: PostgreSQL with Drizzle ORM
-- **Database Provider**: Neon Database (serverless PostgreSQL)
-- **Session Management**: PostgreSQL-backed sessions with connect-pg-simple
-- **Development**: Hot module replacement with Vite integration
+- **Runtime**: Python 3.11 with FastAPI framework
+- **Language**: Python with async/await support
+- **Analysis Engine**: AdShield - comprehensive content security analysis
+- **AI Integration**: Google Gemini API for enhanced insights
+- **Pattern Detection**: Regex-based PII, prompt injection, and bias detection
+- **Development**: Uvicorn ASGI server with auto-reload
 
 ### Key Design Decisions
 
@@ -99,6 +99,7 @@ The core analysis functionality simulates advanced AI security analysis includin
 - July 02, 2025. Initial setup
 - July 02, 2025. Reorganized frontend code into dedicated `frontend/` folder with standalone build configuration
 - July 02, 2025. Added individual PII masking functionality with animated visual effects
+- July 03, 2025. Migrated backend from Node.js/TypeScript to Python/FastAPI with AdShield analysis engine
 
 ## User Preferences
 
