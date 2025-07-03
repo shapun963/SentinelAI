@@ -24,7 +24,7 @@ Sentinel AI is a comprehensive web application designed to analyze AI prompts fo
 
 ### Key Design Decisions
 
-**Monorepo Structure**: The application uses a unified monorepo with shared schemas between client and server, promoting type safety and reducing code duplication.
+**Frontend Separation**: The application now has a dedicated `frontend/` folder containing all client-side code with its own build configuration, package.json, and development setup. The original `client/` folder remains for compatibility with the existing Vite configuration.
 
 **Type-Safe Database Operations**: Drizzle ORM with PostgreSQL provides type-safe database operations while maintaining flexibility for complex queries.
 
@@ -97,6 +97,8 @@ The core analysis functionality simulates advanced AI security analysis includin
 
 ## Changelog
 - July 02, 2025. Initial setup
+- July 02, 2025. Reorganized frontend code into dedicated `frontend/` folder with standalone build configuration
+- July 02, 2025. Added individual PII masking functionality with animated visual effects
 
 ## User Preferences
 
